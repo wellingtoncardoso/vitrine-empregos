@@ -1,0 +1,13 @@
+/*
+*header
+*/
+header nav div{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+header nav div ul.nav{
+  width: 100%;
+  max-width: 580px;
+}

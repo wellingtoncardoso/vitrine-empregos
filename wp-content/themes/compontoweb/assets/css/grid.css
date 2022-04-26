@@ -1,0 +1,16 @@
+/*
+*grid main
+*/
+.grid-main{
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  height: 100%;
+}
+@media screen and (min-width: 992px){
+  .grid-main{
+    display: grid;
+    align-items: initial;
+    grid-template-columns: minmax(0px,50%) 1fr;
+  }
+}

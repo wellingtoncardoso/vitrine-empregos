@@ -1,0 +1,44 @@
+/*
+*Add class from color
+*/
+:root{
+  /* fonts */
+  --roboto  : 'Roboto', sans-serif;
+
+  /* variables dashboard */
+  --color-primary: #186FB6; 
+  --color-secondary: #CCC;
+  --color-danger: #f8091d;
+  --color-success: #0efaab;
+  --color-warning: #fff455;
+  --color-white: #FFF;
+  --color-info-dark: #7D8DA1;
+  --colot-info-light: #DCE1EB;
+  --color-dark: #363949;
+  --color-light: rgba(132,139,200, .18);
+  --color-primary-variant: #111E88;
+  --color-dark-variant: #677483;
+  --color-background: #F6F6F9;
+
+  --color-text: #444;
+
+  --card-border-radius: .5rem;
+  --border-radius-1: .4rem;
+  --border-radius-2: .8rem;
+  --border-radius-3: 1.2rem;
+
+  --card-padding: 1.8rem;
+  --padding-1: 1.2rem;
+
+  --box-shadow: 0 2rem 2.6rem var(--color-light);
+  --box-shadow-hover: 0 .2rem .1rem var(--color-primary);
+}
+/* dark theme variables */
+.dark-theme-variables{
+  --color-background: #181A1E;
+  --color-white: #202528;
+  --color-dark: #EDEFFD;
+  --color-dark-variant: #A3BDCC;
+  --color-light: rgba(0,0,0,.4);
+  --box-shadow: 0 2rem 3rem var(--color-light);       
+}

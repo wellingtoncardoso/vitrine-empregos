@@ -1,0 +1,114 @@
+/*
+*main
+*/
+.content{
+  display: none;
+}
+@media screen and (min-width: 768px){
+  .content{
+    background-color: var(--color-secondary);
+    height: 100vh;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+  }
+  .content .thumbnail{
+    width: 100%;
+    max-width: 480px;
+    height: auto;
+    margin: 0 auto;
+    border-radius: var(--border-radius-1);
+    box-shadow: (--box-shadow);
+  }
+  .content h1{
+    font-size: 2.5rem;
+    line-height: 1.1;
+    margin-top: 1.4rem;
+    margin-bottom: 1.4rem;
+  }
+  .content p{
+    font-size: 1.125rem;
+    font-weight: 300;
+  }
+  .content a{
+    color: var(--color-text);
+    font-size: 1rem;
+    font-weight: bold;
+    transition: .3s all ease;
+  }
+  .content a:hover{
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--color-danger);
+  }  
+}
+.access{
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.access-flex{
+  display: flex;
+  align-items: center;
+}
+.access-flex-content{
+  display: flex;
+  flex-direction: column;
+}
+.access-flex-content h3{
+  width: 100%;
+  max-width: 440px;
+  height: 86px;
+  font-size: 2.25rem;
+  line-height: 44px;
+  text-align: left;
+  margin-top: 40px;
+  margin-bottom: 16px;
+  padding-right: 40px;
+}
+  .access-flex-content .nav-info{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+  }
+  
+.access-flex-content .nav-info li{
+  width: 100%;
+  max-width: 180px;
+
+  display: grid;
+  align-items: center;
+  justify-content: center;
+
+  padding: 2rem 1.5rem;
+  border-radius: var(--border-radius-1);
+  border: none;
+  box-shadow: var(--box-shadow);
+  
+  transition: .3s all ease;
+}
+.access-flex-content .nav-info li:hover{
+  cursor: pointer;
+  box-shadow: var(--box-shadow-hover);
+  transition: .3s all ease;
+}
+.access-flex-content .nav-info li a{
+  line-height: 18px;
+  color: var(--color-text);
+}
+.access-flex-content .nav-info li i{
+  font-size: 1.25rem;
+  font-weight: 300;
+  text-align: center;
+  margin: .5rem 0px .8rem;
+  transition: .3s all ease;
+}
+.access-flex-content .nav-info li:hover a,
+.access-flex-content .nav-info li:hover i{
+  color: var(--color-primary);
+}
+
+/* https://home.revelo.com.br/sign_in */
