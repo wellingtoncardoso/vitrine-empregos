@@ -277,7 +277,7 @@
             </td>
         </tr>
 
-        <?php if ( file_exists( WPPB_PLUGIN_DIR.'/features/admin-approval/admin-approval.php' ) ) : ?>
+        <?php if ( defined( 'WPPB_PAID_PLUGIN_DIR' ) && file_exists( WPPB_PAID_PLUGIN_DIR.'/features/admin-approval/admin-approval.php' ) ) : ?>
             <tr>
                 <th><?php esc_html_e( 'Save Admin Approval status in usermeta', 'profile-builder' ); ?></th>
 
@@ -298,7 +298,7 @@
             </tr>
         <?php endif; ?>
 
-        <?php if ( file_exists( WPPB_PLUGIN_DIR.'/features/admin-approval/admin-approval.php' ) ) : ?>
+        <?php if ( defined( 'WPPB_PAID_PLUGIN_DIR' ) && file_exists( WPPB_PAID_PLUGIN_DIR.'/features/admin-approval/admin-approval.php' ) ) : ?>
             <tr>
                 <th><?php esc_html_e( 'Redirect \'/author\' page if user is not approved', 'profile-builder' ); ?></th>
 

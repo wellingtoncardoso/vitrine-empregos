@@ -317,17 +317,19 @@ abstract class PB_Elementor_Widget extends \Elementor\Widget_Base {
                 include_once( WPPB_PLUGIN_DIR.'/front-end/recover.php' );
                 return wppb_front_end_password_recovery();
             case 'ul':
-                include_once( WPPB_PLUGIN_DIR.'/add-ons/user-listing/userlisting.php' );
-                $atts = [
-                    'name'       => $settings['pb_name'],
-                    'single'     => $settings['pb_single'] === 'yes',
-                    'meta_key'   => $settings['pb_meta_key'],
-                    'meta_value' => $settings['pb_meta_value'],
-                    'include'    => $settings['pb_include'],
-                    'exclude'    => $settings['pb_exclude'],
-                    'id'         => $settings['pb_id'],
-                ];
-                return wppb_user_listing_shortcode( $atts );
+                if( defined( 'WPPB_PAID_PLUGIN_DIR' ) ){
+                    include_once( WPPB_PAID_PLUGIN_DIR.'/add-ons/user-listing/userlisting.php' );
+                    $atts = [
+                        'name'       => $settings['pb_name'],
+                        'single'     => $settings['pb_single'] === 'yes',
+                        'meta_key'   => $settings['pb_meta_key'],
+                        'meta_value' => $settings['pb_meta_value'],
+                        'include'    => $settings['pb_include'],
+                        'exclude'    => $settings['pb_exclude'],
+                        'id'         => $settings['pb_id'],
+                    ];
+                    return wppb_user_listing_shortcode( $atts );
+                }
         }
     }
 }

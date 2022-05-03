@@ -7,7 +7,7 @@ get_header(); ?>
   <section class="grid-main">
     <section class="content">
       <div class="thumbnail">
-        <img src="<?php echo get_template_directory_uri()?>/assets/img/man-work.jpg" alt="">
+        <img src="<?php echo get_template_directory_uri()?>/assets/img/delete/woman-01.jpg" alt="">
         <h1>Lorem ipsum dolor sit amet</h1>
         <p>Lorem ipsum dolor sit amet</p>
       </div>

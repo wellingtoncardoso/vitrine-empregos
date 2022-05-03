@@ -23,7 +23,9 @@ function wppb_basic_info_content() {
 
 	$version = 'Free';
 	$version = ( ( PROFILE_BUILDER == 'Profile Builder Pro' ) ? 'Pro' : $version );
-	$version = ( ( PROFILE_BUILDER == 'Profile Builder Hobbyist' ) ? 'Hobbyist' : $version );
+	$version = ( ( PROFILE_BUILDER == 'Profile Builder Elite' ) ? 'Elite' : $version );
+	$version = ( ( PROFILE_BUILDER == 'Profile Builder Unlimited' ) ? 'Unlimited' : $version );
+	$version = ( ( PROFILE_BUILDER == 'Profile Builder Basic' ) ? 'Basic' : $version );
 
 ?>
 	<div class="wrap wppb-wrap wppb-info-wrap">
@@ -148,7 +150,7 @@ function wppb_basic_info_content() {
 		<div>
 			<h3><?php esc_html_e( 'Powerful Add-ons (**)', 'profile-builder' );?></h3>
 			<p><?php esc_html_e( 'Everything you will need to manage your users is probably already available using the Pro Add-ons.', 'profile-builder' ); ?></p>
-            <?php if( file_exists ( WPPB_PLUGIN_DIR.'/add-ons/add-ons.php' ) ): ?>
+            <?php if( defined('WPPB_PAID_PLUGIN_DIR') && file_exists ( WPPB_PAID_PLUGIN_DIR.'/add-ons/add-ons.php' ) ): ?>
 			    <p><a href="admin.php?page=profile-builder-add-ons" class="button"><?php esc_html_e( 'Enable your add-ons', 'profile-builder' ); ?></a></p>
             <?php endif; ?>
 			<?php if ($version == 'Free'){ ?>

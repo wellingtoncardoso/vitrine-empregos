@@ -676,6 +676,17 @@ function wppb_get_old_addons_slug_list(){
                             'pb-add-on-maximum-character-length/index.php',
                             'pb-add-on-custom-css-classes-on-fields/index.php',
                             'pb-add-on-import-export/pbie.php',
+                            'pb-add-on-buddypress/index.php',
+                            'pb-add-on-social-connect/index.php',
+                            'pb-add-on-woocommerce/index.php',
+                            'pb-add-on-multi-step-forms/index.php',
+                            'pb-add-on-mailchimp-integration/index.php',
+                            'pb-add-on-bbpress/index.php',
+                            'pb-add-on-campaign-monitor/index.php',
+                            'pb-add-on-field-visibility/index.php',
+                            'pb-add-on-edit-profile-approved-by-admin/index.php',
+                            'pb-add-on-custom-profile-menus/index.php',
+                            'pb-add-on-mailpoet-integration/index.php',
                             );
 
     if( PROFILE_BUILDER !== 'Profile Builder Free' )

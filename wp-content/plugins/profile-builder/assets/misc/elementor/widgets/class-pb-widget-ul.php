@@ -13,15 +13,17 @@ class PB_Elementor_User_Listing_Widget extends PB_Elementor_Widget {
     public function __construct($data = [], $args = null) {
         parent::__construct($data, $args);
 
-        wp_register_script('wppb-userlisting-js', WPPB_PLUGIN_URL . '/add-ons/user-listing/userlisting.js', array('jquery', 'jquery-touch-punch'), PROFILE_BUILDER_VERSION, true);
-        wp_localize_script( 'wppb-userlisting-js', 'wppb_userlisting_obj', array( 'pageSlug' => wppb_get_users_pagination_slug() ) );
-        wp_register_style('wppb-ul-slider-css', WPPB_PLUGIN_URL . '/add-ons/user-listing/jquery-ui-slider.min.css', array(), PROFILE_BUILDER_VERSION );
-        //wp_register_script('jquery-ui-slider');
+        if( defined( 'WPPB_PAID_PLUGIN_URL' ) ){
+            wp_register_script('wppb-userlisting-js', WPPB_PAID_PLUGIN_URL . 'add-ons/user-listing/userlisting.js', array('jquery', 'jquery-touch-punch'), PROFILE_BUILDER_VERSION, true);
+            wp_localize_script( 'wppb-userlisting-js', 'wppb_userlisting_obj', array( 'pageSlug' => wppb_get_users_pagination_slug() ) );
+            wp_register_style('wppb-ul-slider-css', WPPB_PAID_PLUGIN_URL . 'add-ons/user-listing/jquery-ui-slider.min.css', array(), PROFILE_BUILDER_VERSION );
+            //wp_register_script('jquery-ui-slider');
+        }
 
     }
 
     public function get_script_depends() {
-        if ( file_exists(WPPB_PLUGIN_DIR . '/add-ons/user-listing/userlisting.php') ) {
+        if ( defined( 'WPPB_PAID_PLUGIN_DIR' ) && file_exists(WPPB_PAID_PLUGIN_DIR . '/add-ons/user-listing/userlisting.php') ) {
             return [
                 'wppb-userlisting-js',
                 'jquery-ui-slider',
@@ -32,7 +34,7 @@ class PB_Elementor_User_Listing_Widget extends PB_Elementor_Widget {
 
     public function get_style_depends() {
         $styles = [];
-        if ( file_exists(WPPB_PLUGIN_DIR . '/add-ons/user-listing/userlisting.php') ) {
+        if ( defined( 'WPPB_PAID_PLUGIN_DIR' ) && file_exists(WPPB_PAID_PLUGIN_DIR . '/add-ons/user-listing/userlisting.php') ) {
             $styles = [
                 'wppb-ul-slider-css',
             ];
@@ -68,7 +70,7 @@ class PB_Elementor_User_Listing_Widget extends PB_Elementor_Widget {
      * Register widget controls.
      *
      */
-    protected function _register_controls() {
+    protected function register_controls() {
 
         $this->start_controls_section(
             'pb_user_listing_settings',

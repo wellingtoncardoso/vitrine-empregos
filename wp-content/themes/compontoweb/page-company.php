@@ -7,7 +7,7 @@
 			<div class="row">
 				<div class="col-12 col-md-4 m-auto">
 					<h2>Acesse sua conta</h2>
-					<?php echo do_shortcode('[wppb-login]')?>
+					<?php echo do_shortcode('[ultimatemember form_id="81"]')?>
 				</div>
 			</div>
 			<div class="row">

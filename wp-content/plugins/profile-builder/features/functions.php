@@ -166,8 +166,8 @@ if ( is_admin() ){
 	add_action( 'admin_init', 'wppb_register_settings' );
 
 	// display the same extra profile fields in the admin panel also
-	if ( file_exists ( WPPB_PLUGIN_DIR.'/front-end/extra-fields/extra-fields.php' ) ){
-		require_once( WPPB_PLUGIN_DIR.'/front-end/extra-fields/extra-fields.php' );
+	if ( defined( 'WPPB_PAID_PLUGIN_DIR' ) && file_exists ( WPPB_PAID_PLUGIN_DIR.'/front-end/extra-fields/extra-fields.php' ) ){
+		require_once( WPPB_PAID_PLUGIN_DIR.'/front-end/extra-fields/extra-fields.php' );
 
 		add_action( 'show_user_profile', 'display_profile_extra_fields_in_admin', 10 );
 		add_action( 'edit_user_profile', 'display_profile_extra_fields_in_admin', 10 );
@@ -314,7 +314,7 @@ $args = array(
 			'capability'	=> 'manage_options',
 			'menu_slug' 	=> 'profile-builder',
 			'page_type'		=> 'menu_page',
-			'position' 		=> '70,69',
+			'position' 		=> '70.69',
 			'priority' 		=> 1,
 			'icon_url' 		=> WPPB_PLUGIN_URL . 'assets/images/pb-menu-icon.png'
 		);
@@ -1322,7 +1322,9 @@ function wppb_get_redirect_url( $redirect_priority, $redirect_type, $redirect_ur
         $redirect_priority = 'normal';
     }
 
-	if( PROFILE_BUILDER == 'Profile Builder Pro' ) {
+	$versions = array( 'Profile Builder Pro', 'Profile Builder Elite', 'Profile Builder Unlimited', 'Profile Builder Dev' );
+
+	if( in_array( PROFILE_BUILDER, $versions ) ) {
 		$wppb_module_settings = get_option( 'wppb_module_settings' );
 
 		if( isset( $wppb_module_settings['wppb_customRedirect'] ) && $wppb_module_settings['wppb_customRedirect'] == 'show' && $redirect_priority != 'top' && function_exists( 'wppb_custom_redirect_url' ) ) {
@@ -1713,7 +1715,7 @@ function wppb_gdpr_delete_user() {
  */
 function wppb_get_admin_approval_option_value(){
     $wppb_general_settings = get_option( 'wppb_general_settings', 'not_found' );
-    if( file_exists(WPPB_PLUGIN_DIR . '/features/admin-approval/admin-approval.php') && $wppb_general_settings != 'not_found' && !empty( $wppb_general_settings['adminApproval'] ) &&  $wppb_general_settings['adminApproval'] === 'yes' )
+    if( defined( 'WPPB_PAID_PLUGIN_DIR' ) && file_exists( WPPB_PAID_PLUGIN_DIR . '/features/admin-approval/admin-approval.php' ) && $wppb_general_settings != 'not_found' && !empty( $wppb_general_settings['adminApproval'] ) &&  $wppb_general_settings['adminApproval'] === 'yes' )
         return 'yes';
     else
         return 'no';
@@ -1724,7 +1726,7 @@ function wppb_get_admin_approval_option_value(){
  * @return bool
  */
 function wppb_conditional_fields_exists(){
-    if (file_exists(WPPB_PLUGIN_DIR . '/features/conditional-fields/conditional-fields.php'))
+    if ( defined( 'WPPB_PAID_PLUGIN_DIR' ) && file_exists( WPPB_PAID_PLUGIN_DIR . '/features/conditional-fields/conditional-fields.php' ) )
         return true;
     else
         return false;
@@ -1755,8 +1757,8 @@ function wppb_embed($atts, $content){
  */
 
 function wppb_check_if_add_on_is_active( $slug ){
-    //the old modulse part
-    if (file_exists(WPPB_PLUGIN_DIR . '/add-ons/add-ons.php')) {
+    //the old modules part
+    if ( defined( 'WPPB_PAID_PLUGIN_DIR' ) && file_exists(WPPB_PAID_PLUGIN_DIR . '/add-ons/add-ons.php')) {
         $wppb_module_settings = get_option('wppb_module_settings', 'not_found');
         if ($wppb_module_settings != 'not_found') {
             foreach ($wppb_module_settings as $add_on_slug => $status) {
@@ -1774,6 +1776,16 @@ function wppb_check_if_add_on_is_active( $slug ){
     $wppb_free_add_ons_settings = get_option( 'wppb_free_add_ons_settings', array() );
     if ( !empty( $wppb_free_add_ons_settings ) ){
         foreach( $wppb_free_add_ons_settings as $add_on_slug => $status ){
+            if( $slug == $add_on_slug ){
+                return $status;
+            }
+        }
+    }
+
+    //the advanced addons part
+    $wppb_advanced_add_ons_settings = get_option( 'wppb_advanced_add_ons_settings', array() );
+    if ( !empty( $wppb_advanced_add_ons_settings ) ){
+        foreach( $wppb_advanced_add_ons_settings as $add_on_slug => $status ){
             if( $slug == $add_on_slug ){
                 return $status;
             }

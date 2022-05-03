@@ -9,6 +9,22 @@ footer ul .nav-item{
 footer ul .nav-item .nav-link{
   color: var(--color-text);
   font-size: .875rem;
+  padding-left: 0px;
+  padding-bottom: 0px;
+  transition: .3s all ease;
+}
+footer ul .nav-item .nav-link:hover{
+  cursor: pointer;
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+footer ul .nav-item.active .nav-link{
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+footer h4{
+  font-size: 1.125rem;
+  font-weight: 600;
 }
 
 /*

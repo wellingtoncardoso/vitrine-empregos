@@ -15,7 +15,7 @@ if( ! class_exists( 'CL_Addons_List_Table' ) ) {
 function wppb_register_add_ons_submenu_page() {
     add_submenu_page( 'profile-builder', __( 'Add-Ons', 'profile-builder' ), __( 'Add-Ons', 'profile-builder' ), 'manage_options', 'profile-builder-add-ons', 'wppb_add_ons_content' );
 }
-add_action( 'admin_menu', 'wppb_register_add_ons_submenu_page', 19 );
+add_action( 'admin_menu', 'wppb_register_add_ons_submenu_page', 28 );
 
 
 /**
@@ -38,7 +38,7 @@ function wppb_add_ons_content() {
 
     //Add Pro Section
     $pb_addons_listing->section_header = array( 'title' => __('Pro Add-ons', 'profile-builder' ), 'description' => __('These Add-ons are available with the Pro and Unlimited license', 'profile-builder')  );
-    $pb_addons_listing->section_versions = array( 'Profile Builder Pro' );
+    $pb_addons_listing->section_versions = array( 'Profile Builder Pro', 'Profile Builder Elite', 'Profile Builder Unlimited' );
     $pb_addons_listing->items = array(
         array(  'slug' => 'wppb_multipleRegistrationForms',
             'type' => 'add-on',
@@ -82,8 +82,8 @@ function wppb_add_ons_content() {
             'icon' => 'pro_repeater_fields.png',
             'doc_url' => 'https://www.cozmoslabs.com/docs/profile-builder-2/modules/repeater-fields/?utm_source=wpbackend&utm_medium=clientsite&utm_content=add-on-page&utm_campaign=PBPro',
         ),
-        array(  'slug' => 'pb-add-on-buddypress/index.php',
-            'type' => 'plugin',
+        array(  'slug' => 'buddypress',
+            'type' => 'add-on',
             'name' => __( 'BuddyPress', 'profile-builder' ),
             'description' => __( 'This integration add-on allows extending BuddyPress user profiles with Profile Builder user fields.', 'profile-builder' ),
             'icon' => 'pro_buddypress.png',
@@ -94,83 +94,83 @@ function wppb_add_ons_content() {
     $pb_addons_listing->add_section();
 
     //Add Hobbyist section
-    $pb_addons_listing->section_header = array( 'title' => __('Advanced Add-ons', 'profile-builder' ), 'description' => __('These Add-ons are available with the Hobbyist, Pro and Unlimited license', 'profile-builder')  );
-    $pb_addons_listing->section_versions = array( 'Profile Builder Pro', 'Profile Builder Hobbyist' );
+    $pb_addons_listing->section_header = array( 'title' => __('Advanced Add-ons', 'profile-builder' ), 'description' => __('These Add-ons are available with the Basic, Pro and Unlimited license', 'profile-builder')  );
+    $pb_addons_listing->section_versions = array( 'Profile Builder Pro', 'Profile Builder Hobbyist', 'Profile Builder Basic', 'Profile Builder Elite', 'Profile Builder Unlimited' );
     $pb_addons_listing->items = array(
-        array(  'slug' => 'pb-add-on-social-connect/index.php',
-                'type' => 'plugin',
+        array(  'slug' => 'social-connect',
+                'type' => 'add-on',
                 'name' => __( 'Social Connect', 'profile-builder' ),
                 'description' => __( 'Easily configure and enable social login on your website. Users can login with social platforms like Facebook, Google+ or Twitter.', 'profile-builder' ),
                 'icon' => 'pb_addon_small_social_connect.png',
                 'doc_url' => 'http://www.cozmoslabs.com/docs/profile-builder-2/add-ons/social-connect/?utm_source=wpbackend&utm_medium=clientsite&utm_content=add-on-page&utm_campaign=PBPro',
                 'download_url' => 'https://www.cozmoslabs.com/add-ons/social-connect/?utm_source=wpbackend&utm_medium=clientsite&utm_content=add-on-page&utm_campaign=PBPro'
         ),
-        array(  'slug' => 'pb-add-on-woocommerce/index.php',
-                'type' => 'plugin',
+        array(  'slug' => 'woocommerce',
+                'type' => 'add-on',
                 'name' => __( 'WooCommerce Sync', 'profile-builder' ),
                 'description' => __( 'Syncs Profile Builder with WooCommerce, allowing you to manage the user Shipping and Billing fields from WooCommerce with Profile Builder.', 'profile-builder' ),
                 'icon' => 'pb_addon_small_woosync.png',
                 'doc_url' => 'https://www.cozmoslabs.com/docs/profile-builder-2/add-ons/woocommerce-sync/?utm_source=wpbackend&utm_medium=clientsite&utm_content=add-on-page&utm_campaign=PBPro',
                 'download_url' => 'https://www.cozmoslabs.com/add-ons/woocommerce-sync/?utm_source=wpbackend&utm_medium=clientsite&utm_content=add-on-page&utm_campaign=PBPro',
         ),
-        array(  'slug' => 'pb-add-on-multi-step-forms/index.php',
-                'type' => 'plugin',
+        array(  'slug' => 'multi-step-forms',
+                'type' => 'add-on',
                 'name' => __( 'Multi Step Forms', 'profile-builder' ),
                 'description' => __( 'Extends the functionality of Profile Builder by adding the possibility of having multi-page registration and edit-profile forms.', 'profile-builder' ),
                 'icon' => 'pb_addon_small_multistep_forms.png',
                 'doc_url' => 'https://www.cozmoslabs.com/docs/profile-builder-2/add-ons/multi-step-forms/?utm_source=wpbackend&utm_medium=clientsite&utm_content=add-on-page&utm_campaign=PBPro',
                 'download_url' => 'https://www.cozmoslabs.com/add-ons/multi-step-forms/?utm_source=wpbackend&utm_medium=clientsite&utm_content=add-on-page&utm_campaign=PBPro',
         ),
-        array(  'slug' => 'pb-add-on-mailchimp-integration/index.php',
-                'type' => 'plugin',
+        array(  'slug' => 'mailchimp-integration',
+                'type' => 'add-on',
                 'name' => __( 'MailChimp', 'profile-builder' ),
                 'description' => __( 'Easily associate MailChimp list fields with Profile Builder fields and set advanced settings for each list.', 'profile-builder' ),
                 'icon' => 'pb_addon_small_mailchimp.png',
                 'doc_url' => 'https://www.cozmoslabs.com/docs/profile-builder-2/add-ons/mailchimp/?utm_source=wpbackend&utm_medium=clientsite&utm_content=add-on-page&utm_campaign=PBPro',
                 'download_url' => 'https://www.cozmoslabs.com/add-ons/profile-builder-mailchimp/?utm_source=wpbackend&utm_medium=clientsite&utm_content=add-on-page&utm_campaign=PBPro',
         ),
-        array(  'slug' => 'pb-add-on-bbpress/index.php',
-                'type' => 'plugin',
+        array(  'slug' => 'bbpress',
+                'type' => 'add-on',
                 'name' => __( 'bbPress', 'profile-builder' ),
                 'description' => __( 'This add-on allows you to integrate Profile Builder with the popular forums plugin, bbPress.', 'profile-builder' ),
                 'icon' => 'pb_addon_small_bbpress.png',
                 'doc_url' => 'https://www.cozmoslabs.com/docs/profile-builder-2/add-ons/bbpress/?utm_source=wpbackend&utm_medium=clientsite&utm_content=add-on-page&utm_campaign=PBPro',
                 'download_url' => 'https://www.cozmoslabs.com/add-ons/bbpress/?utm_source=wpbackend&utm_medium=clientsite&utm_content=add-on-page&utm_campaign=PBPro',
         ),
-        array(  'slug' => 'pb-add-on-campaign-monitor/index.php',
-                'type' => 'plugin',
+        array(  'slug' => 'campaign-monitor',
+                'type' => 'add-on',
                 'name' => __( 'Campaign Monitor', 'profile-builder' ),
                 'description' => __( 'Easily associate Campaign Monitor client list fields with Profile Builder fields. Use Profile Builder Campaign Monitor Widget to add more subscribers to your lists.', 'profile-builder' ),
                 'icon' => 'pb_addon_small_campaignmonitor.png',
                 'doc_url' => 'https://www.cozmoslabs.com/docs/profile-builder-2/add-ons/campaign-monitor/?utm_source=wpbackend&utm_medium=clientsite&utm_content=add-on-page&utm_campaign=PBPro',
                 'download_url' => 'https://www.cozmoslabs.com/add-ons/profile-builder-campaign-monitor/?utm_source=wpbackend&utm_medium=clientsite&utm_content=add-on-page&utm_campaign=PBPro',
         ),
-        array(  'slug' => 'pb-add-on-field-visibility/index.php',
-                'type' => 'plugin',
+        array(  'slug' => 'field-visibility',
+                'type' => 'add-on',
                 'name' => __( 'Field Visibility', 'profile-builder' ),
                 'description' => __( 'Extends the functionality of Profile Builder by allowing you to change visibility options for the extra fields.', 'profile-builder' ),
                 'icon' => 'pb_addon_small_fieldvisibility.png',
                 'doc_url' => 'https://www.cozmoslabs.com/docs/profile-builder-2/add-ons/field-visibility/?utm_source=wpbackend&utm_medium=clientsite&utm_content=add-on-page&utm_campaign=PBPro',
                 'download_url' => 'https://www.cozmoslabs.com/add-ons/field-visibility/?utm_source=wpbackend&utm_medium=clientsite&utm_content=add-on-page&utm_campaign=PBPro',
         ),
-        array(  'slug' => 'pb-add-on-edit-profile-approved-by-admin/index.php',
-                'type' => 'plugin',
+        array(  'slug' => 'edit-profile-approved-by-admin',
+                'type' => 'add-on',
                 'name' => __( 'Edit Profile Approved by Admin', 'profile-builder' ),
                 'description' => __( 'Extends the functionality of Profile Builder by allowing administrators to approve profile changes made by users on individual fields.', 'profile-builder' ),
                 'icon' => 'pb_addon_epaa_small.png',
                 'doc_url' => 'https://www.cozmoslabs.com/docs/profile-builder-2/add-ons/edit-profile-approved-by-admin/?utm_source=wpbackend&utm_medium=clientsite&utm_content=add-on-page&utm_campaign=PBPro',
                 'download_url' => 'https://www.cozmoslabs.com/add-ons/edit-profile-approved-by-admin/?utm_source=wpbackend&utm_medium=clientsite&utm_content=add-on-page&utm_campaign=PBPro',
         ),
-        array(  'slug' => 'pb-add-on-custom-profile-menus/index.php',
-                'type' => 'plugin',
+        array(  'slug' => 'custom-profile-menus',
+                'type' => 'add-on',
                 'name' => __( 'Custom Profile Menus', 'profile-builder' ),
                 'description' => __( 'Add custom menu items like Login/Logout or just Logout button and Login/Register/Edit Profile in iFrame Popup.', 'profile-builder' ),
                 'icon' => 'pb_addon_small_custom_menu.png',
                 'doc_url' => 'https://www.cozmoslabs.com/docs/profile-builder-2/add-ons/custom-profile-menus/?utm_source=wpbackend&utm_medium=clientsite&utm_content=add-on-page&utm_campaign=PBPro',
                 'download_url' => 'https://www.cozmoslabs.com/add-ons/custom-profile-menus/?utm_source=wpbackend&utm_medium=clientsite&utm_content=add-on-page&utm_campaign=PBPro',
         ),
-        array(  'slug' => 'pb-add-on-mailpoet-integration/index.php',
-                'type' => 'plugin',
+        array(  'slug' => 'mailpoet-integration',
+                'type' => 'add-on',
                 'name' => __( 'MailPoet', 'profile-builder' ),
                 'description' => __( 'Allow users to subscribe to your MailPoet lists directly from the Register and Edit Profile forms.', 'profile-builder' ),
                 'icon' => 'pb_addon_small_mailpoet.png',
@@ -182,7 +182,7 @@ function wppb_add_ons_content() {
 
     //Add Free section
     $pb_addons_listing->section_header = array( 'title' => __('Free Add-ons', 'profile-builder' ), 'description' => __('These Add-ons are available in all versions of Profile Builder', 'profile-builder')  );
-    $pb_addons_listing->section_versions = array( 'Profile Builder Pro', 'Profile Builder Hobbyist', 'Profile Builder Free' );
+    $pb_addons_listing->section_versions = array( 'Profile Builder Pro', 'Profile Builder Hobbyist', 'Profile Builder Free', 'Profile Builder Basic', 'Profile Builder Elite', 'Profile Builder Unlimited' );
     $pb_addons_listing->items = array(
         array(  'slug' => 'import-export',
                 'type' => 'add-on',
@@ -263,7 +263,7 @@ function wppb_add_ons_content() {
 
     //Add Recommended Plugins
     $pb_addons_listing->section_header = array( 'title' => __('Recommended Plugins', 'profile-builder' ), 'description' => __('These plugins are compatible with all versions of Profile Builder', 'profile-builder')  );
-    $pb_addons_listing->section_versions = array( 'Profile Builder Pro', 'Profile Builder Hobbyist', 'Profile Builder Free' );
+    $pb_addons_listing->section_versions = array( 'Profile Builder Pro', 'Profile Builder Hobbyist', 'Profile Builder Free', 'Profile Builder Basic', 'Profile Builder Elite', 'Profile Builder Unlimited' );
     $pb_addons_listing->items = array(
         array(  'slug' => 'translatepress-multilingual/index.php',
             'type' => 'plugin',
@@ -351,6 +351,8 @@ function wppb_check_add_ons_activation( $bool, $slug ){
 add_action( 'cl_add_ons_activate', 'wppb_activate_add_ons' );
 function wppb_activate_add_ons( $slug ){
     wppb_activate_or_deactivate_add_on( $slug, 'show' );
+
+    do_action( 'wppb_add_ons_activate', $slug );
 }
 
 /**
@@ -359,6 +361,8 @@ function wppb_activate_add_ons( $slug ){
 add_action( 'cl_add_ons_deactivate', 'wppb_deactivate_add_ons' );
 function wppb_deactivate_add_ons( $slug ){
     wppb_activate_or_deactivate_add_on( $slug, 'hide' );
+
+    do_action( 'wppb_add_ons_deactivate', $slug );
 }
 
 
@@ -390,6 +394,20 @@ function wppb_activate_or_deactivate_add_on( $slug, $action ){
         }
     }
     update_option( 'wppb_free_add_ons_settings', $wppb_free_add_ons_settings );
+
+    //the advanced addons part
+    $wppb_advanced_add_ons_settings = get_option( 'wppb_advanced_add_ons_settings', array() );
+    if ( !empty( $wppb_advanced_add_ons_settings ) ){
+        foreach( $wppb_advanced_add_ons_settings as $add_on_slug => $status ){
+            if( $slug == $add_on_slug ){
+                if( $action == 'show' )
+                    $wppb_advanced_add_ons_settings[$add_on_slug] = true;
+                elseif( $action == 'hide' )
+                    $wppb_advanced_add_ons_settings[$add_on_slug] = false;
+            }
+        }
+    }
+    update_option( 'wppb_advanced_add_ons_settings', $wppb_advanced_add_ons_settings );
 }
 
 /**

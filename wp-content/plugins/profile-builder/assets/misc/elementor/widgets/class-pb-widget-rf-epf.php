@@ -18,22 +18,25 @@ abstract class PB_Elementor_Register_Edit_Profile_Widget extends PB_Elementor_Wi
         wp_register_script('wppb_sl2_lib_js', WPPB_PLUGIN_URL . 'assets/js/select2/select2.min.js', array('jquery'));
 
         wp_register_style('wppb_sl2_lib_css', WPPB_PLUGIN_URL . 'assets/css/select2/select2.min.css');
-        wp_register_style( 'wppb_sl2_css', WPPB_PLUGIN_URL.'front-end/extra-fields/select2/select2.css', false, PROFILE_BUILDER_VERSION );
 
         //SelectCPT
         wp_register_script( 'wppb_select2_js', WPPB_PLUGIN_URL .'assets/js/select2/select2.min.js', array( 'jquery' ), PROFILE_BUILDER_VERSION );
         wp_register_style( 'wppb_select2_css', WPPB_PLUGIN_URL .'assets/css/select2/select2.min.css', array(), PROFILE_BUILDER_VERSION );
-        wp_register_style( 'wppb-select-cpt-style', WPPB_PLUGIN_URL.'front-end/extra-fields/select-cpt/style-front-end.css', array(), PROFILE_BUILDER_VERSION );
 
-        //Upload
-        wp_register_style( 'profile-builder-upload-css', WPPB_PLUGIN_URL.'front-end/extra-fields/upload/upload.css', false, PROFILE_BUILDER_VERSION );
+        if( defined( 'WPPB_PAID_PLUGIN_URL' ) ){
+            wp_register_style( 'wppb_sl2_css', WPPB_PAID_PLUGIN_URL.'front-end/extra-fields/select2/select2.css', false, PROFILE_BUILDER_VERSION );
+            wp_register_style( 'wppb-select-cpt-style', WPPB_PAID_PLUGIN_URL.'front-end/extra-fields/select-cpt/style-front-end.css', array(), PROFILE_BUILDER_VERSION );
 
-        //Multi-Step Forms compatibility
-        wp_register_style( 'wppb-msf-style-frontend', WP_PLUGIN_URL.'/pb-add-on-multi-step-forms/assets/css/frontend-multi-step-forms.css', array(), PROFILE_BUILDER_VERSION );
+            //Upload
+            wp_register_style( 'profile-builder-upload-css', WPPB_PAID_PLUGIN_URL.'front-end/extra-fields/upload/upload.css', false, PROFILE_BUILDER_VERSION );
+
+            //Multi-Step Forms compatibility
+            wp_register_style( 'wppb-msf-style-frontend', WPPB_PAID_PLUGIN_URL.'add-ons-advanced/multi-step-forms/assets/css/frontend-multi-step-forms.css', array(), PROFILE_BUILDER_VERSION );
+        }
     }
 
     public function get_script_depends() {
-        if ( file_exists(WPPB_PLUGIN_DIR . '/front-end/extra-fields/extra-fields.php') ) {
+        if ( defined( 'WPPB_PAID_PLUGIN_DIR' ) && file_exists(WPPB_PAID_PLUGIN_DIR . '/front-end/extra-fields/extra-fields.php') ) {
             return [
                 'wppb_sl2_lib_js',
                 'wppb_select2_js',
@@ -44,7 +47,7 @@ abstract class PB_Elementor_Register_Edit_Profile_Widget extends PB_Elementor_Wi
 
     public function get_style_depends() {
         $styles = [];
-        if ( file_exists(WPPB_PLUGIN_DIR . '/front-end/extra-fields/extra-fields.php') ) {
+        if ( defined( 'WPPB_PAID_PLUGIN_DIR' ) && file_exists(WPPB_PAID_PLUGIN_DIR . '/front-end/extra-fields/extra-fields.php') ) {
             $styles = [
                 'wppb_sl2_lib_css',
                 'wppb_sl2_css',
@@ -878,29 +881,32 @@ abstract class PB_Elementor_Register_Edit_Profile_Widget extends PB_Elementor_Wi
 
         if ( $is_elementor_edit_mode && $output->args !== null ) {
 
-            //add the scripts for various fields
-            foreach ( $output->args['form_fields'] as $form_field ){
-                switch ( $form_field['field'] ){
-                    case 'Select2':
-                        echo '<script src="'.esc_url( WPPB_PLUGIN_URL ).'front-end/extra-fields/select2/select2.js?ver='.esc_attr( PROFILE_BUILDER_VERSION ).'" id="wppb_sl2_js"></script>';
-                        break;
-                    case 'WYSIWYG':
-                        echo '<script>jQuery(document.body).off( "click.add-media-button", ".insert-media" );</script>';
-                        break;
-                    case 'Select (CPT)':
-                        echo '<script src="'.esc_url( WPPB_PLUGIN_URL ).'front-end/extra-fields/select-cpt/select-cpt.js?ver='.esc_attr( PROFILE_BUILDER_VERSION ).'" id="wppb-select-cpt-script"></script>';
-                        break;
-                    case 'Phone':
-                        echo '<script src="'.esc_url( WPPB_PLUGIN_URL ).'front-end/extra-fields/phone/jquery.inputmask.bundle.min.js?ver='.esc_attr( PROFILE_BUILDER_VERSION ).'" id="wppb-jquery-inputmask"></script>';
-                        echo '<script src="'.esc_url( WPPB_PLUGIN_URL ).'front-end/extra-fields/phone/script-phone.js?ver='.esc_attr( PROFILE_BUILDER_VERSION ).'" id="wppb-phone-script"></script>';
-                        break;
-                    default:
-                        break;
+            if( defined( 'WPPB_PAID_PLUGIN_URL' ) ){
+                //add the scripts for various fields
+                foreach ( $output->args['form_fields'] as $form_field ){
+                    switch ( $form_field['field'] ){
+                        case 'Select2':
+                            echo '<script src="'.esc_url( WPPB_PAID_PLUGIN_URL ).'front-end/extra-fields/select2/select2.js?ver='.esc_attr( PROFILE_BUILDER_VERSION ).'" id="wppb_sl2_js"></script>';
+                            break;
+                        case 'WYSIWYG':
+                            echo '<script>jQuery(document.body).off( "click.add-media-button", ".insert-media" );</script>';
+                            break;
+                        case 'Select (CPT)':
+                            echo '<script src="'.esc_url( WPPB_PAID_PLUGIN_URL ).'front-end/extra-fields/select-cpt/select-cpt.js?ver='.esc_attr( PROFILE_BUILDER_VERSION ).'" id="wppb-select-cpt-script"></script>';
+                            break;
+                        case 'Phone':
+                            echo '<script src="'.esc_url( WPPB_PAID_PLUGIN_URL ).'front-end/extra-fields/phone/jquery.inputmask.bundle.min.js?ver='.esc_attr( PROFILE_BUILDER_VERSION ).'" id="wppb-jquery-inputmask"></script>';
+                            echo '<script src="'.esc_url( WPPB_PAID_PLUGIN_URL ).'front-end/extra-fields/phone/script-phone.js?ver='.esc_attr( PROFILE_BUILDER_VERSION ).'" id="wppb-phone-script"></script>';
+                            break;
+                        default:
+                            break;
+                    }
                 }
             }
 
             //Multi-Step Forms compatibility
-            if ( is_plugin_active( 'pb-add-on-multi-step-forms/index.php' ) ) {
+            if ( wppb_check_if_add_on_is_active( 'multi-step-forms' ) ) {
+
                 $ajaxUrl = admin_url( 'admin-ajax.php' );
                 $ajaxNonce = wp_create_nonce( 'wppb_msf_frontend_nonce' );
                 echo '
@@ -909,7 +915,7 @@ abstract class PB_Elementor_Register_Edit_Profile_Widget extends PB_Elementor_Wi
                     </script>
                 ';
                 echo '
-                    <script src="'.esc_url( WP_PLUGIN_URL ).'/pb-add-on-multi-step-forms/assets/js/frontend-multi-step-forms.js?ver='.esc_attr( PROFILE_BUILDER_VERSION ).'" id="wppb-msf-script-frontend">
+                    <script src="'.esc_url( WPPB_PAID_PLUGIN_URL ).'add-ons-advanced/multi-step-forms/assets/js/frontend-multi-step-forms.js?ver='.esc_attr( PROFILE_BUILDER_VERSION ).'" id="wppb-msf-script-frontend">
                     </script>
                 ';
 

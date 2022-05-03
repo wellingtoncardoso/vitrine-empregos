@@ -51,8 +51,8 @@ class Profile_Builder_Form_Creator{
 		if ( file_exists ( WPPB_PLUGIN_DIR.'/front-end/default-fields/default-fields.php' ) )
 			require_once( WPPB_PLUGIN_DIR.'/front-end/default-fields/default-fields.php' );
 
-		if ( file_exists ( WPPB_PLUGIN_DIR.'/front-end/extra-fields/extra-fields.php' ) )
-			require_once( WPPB_PLUGIN_DIR.'/front-end/extra-fields/extra-fields.php' );
+		if ( defined( 'WPPB_PAID_PLUGIN_DIR' ) && file_exists ( WPPB_PAID_PLUGIN_DIR.'/front-end/extra-fields/extra-fields.php' ) )
+			require_once( WPPB_PAID_PLUGIN_DIR.'/front-end/extra-fields/extra-fields.php' );
 
 		$this->wppb_retrieve_custom_settings();
 

@@ -208,7 +208,7 @@
             </td>
         </tr>
 
-        <?php if ( file_exists(WPPB_PLUGIN_DIR . '/front-end/extra-fields/extra-fields.php') ) : ?>
+        <?php if ( defined( 'WPPB_PAID_PLUGIN_DIR' ) && file_exists( WPPB_PAID_PLUGIN_DIR . '/front-end/extra-fields/extra-fields.php' ) ) : ?>
             <tr>
                 <th><?php esc_html_e( 'Datepicker starts on Monday', 'profile-builder' ); ?></th>
 
@@ -268,7 +268,7 @@
                 </td>
             </tr>
 
-	    <?php if ( file_exists( WPPB_PLUGIN_DIR . '/front-end/extra-fields/extra-fields.php' ) ) : ?>
+	    <?php if ( defined( 'WPPB_PAID_PLUGIN_DIR' ) && file_exists( WPPB_PAID_PLUGIN_DIR . '/front-end/extra-fields/extra-fields.php' ) ) : ?>
             <tr>
                 <th><?php esc_html_e( 'Remove All Extra Fields from Backend edit profile page.', 'profile-builder' ); ?></th>
 
@@ -286,7 +286,7 @@
             </tr>
 	    <?php endif; ?>
 
-        <?php if ( file_exists( WPPB_PLUGIN_DIR . '/front-end/extra-fields/extra-fields.php' ) ) : ?>
+        <?php if ( defined( 'WPPB_PAID_PLUGIN_DIR' ) && file_exists( WPPB_PAID_PLUGIN_DIR . '/front-end/extra-fields/extra-fields.php' ) ) : ?>
             <tr>
                 <th><?php esc_html_e( 'Update database entries when changing meta key', 'profile-builder' ); ?></th>
 

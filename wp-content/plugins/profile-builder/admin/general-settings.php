@@ -18,18 +18,20 @@ function wppb_get_settings_pages(){
     //add tabs here for Advanced Settings
     $settings_pages['sub-tabs']['profile-builder-toolbox-settings']['forms'] = __( 'Forms', 'profile-builder' );
     $settings_pages['sub-tabs']['profile-builder-toolbox-settings']['fields'] = __( 'Fields', 'profile-builder' );
-    if ( file_exists( WPPB_PLUGIN_DIR . '/add-ons/add-ons.php' ) && isset( $wppb_module_settings['wppb_userListing'] ) &&  $wppb_module_settings['wppb_userListing'] === 'show' )
+
+    if ( defined( 'WPPB_PAID_PLUGIN_DIR' ) && file_exists( WPPB_PAID_PLUGIN_DIR . '/add-ons/add-ons.php' ) && isset( $wppb_module_settings['wppb_userListing'] ) &&  $wppb_module_settings['wppb_userListing'] === 'show' )
         $settings_pages['sub-tabs']['profile-builder-toolbox-settings']['userlisting'] = __( 'Userlisting', 'profile-builder' );
+
     $settings_pages['sub-tabs']['profile-builder-toolbox-settings']['shortcodes'] = __( 'Shortcodes', 'profile-builder' );
     $settings_pages['sub-tabs']['profile-builder-toolbox-settings']['admin'] = __( 'Admin', 'profile-builder' );
 
 	//add tab for 2FA
-	if (file_exists(WPPB_PLUGIN_DIR . '/features/two-factor-authentication/class-two-factor-authentication.php')) {
+	if ( defined( 'WPPB_PAID_PLUGIN_DIR' ) && file_exists(WPPB_PAID_PLUGIN_DIR . '/features/two-factor-authentication/class-two-factor-authentication.php')) {
 		$settings_pages['pages']['profile-builder-two-factor-authentication'] = __( 'Two-Factor Authentication', 'profile-builder' );
 	}
 
     //add sub-pages here for email customizer
-	if (file_exists(WPPB_PLUGIN_DIR . '/add-ons/add-ons.php')) {
+	if ( defined( 'WPPB_PAID_PLUGIN_DIR' ) && file_exists( WPPB_PAID_PLUGIN_DIR . '/add-ons/add-ons.php' ) ) {
 		if( ( isset($wppb_module_settings['wppb_emailCustomizerAdmin']) && $wppb_module_settings['wppb_emailCustomizerAdmin'] == 'show' ) || ( isset($wppb_module_settings['wppb_emailCustomizer']) && $wppb_module_settings['wppb_emailCustomizer'] == 'show') ){
 			$settings_pages['pages']['user-email-customizer'] = __( 'Email Customizer', 'profile-builder' );
 			$settings_pages['sub-pages']['user-email-customizer']['user-email-customizer'] = __( 'User Emails', 'profile-builder' );
@@ -215,7 +217,7 @@ function wppb_general_settings_content() {
 
 
 		<?php
-		if ( file_exists( WPPB_PLUGIN_DIR.'/features/admin-approval/admin-approval.php' ) ){
+		if ( defined( 'WPPB_PAID_PLUGIN_DIR' ) && file_exists( WPPB_PAID_PLUGIN_DIR.'/features/admin-approval/admin-approval.php' ) ){
 		?>
 			<tr>
 				<th scope="row">

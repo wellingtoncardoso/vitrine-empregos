@@ -713,7 +713,7 @@ if( $wppb_general_settings != 'not_found' )
             }
         }
 
-        if ( file_exists ( WPPB_PLUGIN_DIR . '/features/admin-approval/admin-approval.php' ) )
+        if ( defined( 'WPPB_PAID_PLUGIN_DIR' ) && file_exists ( WPPB_PAID_PLUGIN_DIR . '/features/admin-approval/admin-approval.php' ) )
             add_action( 'user_register', 'wppb_update_user_status_on_admin_registration' );
     }
 

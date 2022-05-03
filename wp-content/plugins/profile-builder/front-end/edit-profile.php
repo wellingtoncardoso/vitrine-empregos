@@ -16,8 +16,9 @@ function wppb_autologin_after_password_changed(){
             /* all the error checking filters are defined in each field file so we need them here */
             if ( file_exists ( WPPB_PLUGIN_DIR.'/front-end/default-fields/default-fields.php' ) )
                 require_once( WPPB_PLUGIN_DIR.'/front-end/default-fields/default-fields.php' );
-            if ( file_exists ( WPPB_PLUGIN_DIR.'/front-end/extra-fields/extra-fields.php' ) )
-                require_once( WPPB_PLUGIN_DIR.'/front-end/extra-fields/extra-fields.php' );
+                
+            if ( defined( 'WPPB_PAID_PLUGIN_DIR' ) && file_exists ( WPPB_PAID_PLUGIN_DIR.'/front-end/extra-fields/extra-fields.php' ) )
+                require_once( WPPB_PAID_PLUGIN_DIR.'/front-end/extra-fields/extra-fields.php' );
 
             /* we get the form_name through $_POST so we can apply correctly the filter so we generate the correct fields in the current form  */
             $form_fields = apply_filters( 'wppb_change_form_fields', get_option( 'wppb_manage_fields' ), array( 'form_type'=> 'edit_profile', 'form_fields' => array(), 'form_name' => sanitize_text_field( $_POST['form_name'] ), 'role' => '', 'ID' => Profile_Builder_Form_Creator::wppb_get_form_id_from_form_name( sanitize_text_field( $_POST['form_name'] ), 'edit_profile' ), 'context' => 'edit_profile_auto_login_after_password_change' ) );
