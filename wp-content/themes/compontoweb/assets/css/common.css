@@ -16,7 +16,8 @@ section#rform-company{
 section#register,
 section#forgot-password,
 section#form-company{
-  height: 100vh;
+  height: auto;
+  min-height: 100vh;
   display: grid;
   align-items: center;
   background-color: var(--color-light);

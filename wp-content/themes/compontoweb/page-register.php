@@ -6,11 +6,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-12 col-md-6 m-auto">
-				<h1>Registrar minha empresa</h1>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-12 col-md-6 m-auto">
+				<h2>Registrar minha empresa</h2>
 				<?php echo do_shortcode('[ultimatemember form_id="79"]')?>
 			</div>
 		</div>

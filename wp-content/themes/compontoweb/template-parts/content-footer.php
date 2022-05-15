@@ -4,20 +4,15 @@
     <div class="row">
       <div class="col-12 col-md-6 col-lg-3 m-md-auto">
         <div class="logo-footer d-flex justify-content-center aling-items-center">
-          <?php 
-            switch($post->post_name){
-              case 'vagas' :?>
-              <a href="<?php echo esc_url(home_url('/'))?>vagas">Vitrine Empregos</a>
-              <?php break;
-            default : break;
-            }
-          ?>
+          <a href="<?php echo esc_url(home_url('/'))?>">
+            <img src="<?php echo get_template_directory_uri('')?>/assets/img/logo-vitrine-empregos.png" alt="Logo Vitrine Empregos">
+          </a>
         </div>
       </div>
       <div class="col-12 col-md-6 col-lg-3">
         <h4>Institucional</h4>
         <ul>
-          <li class="nav-item active"><a href="<?php echo esc_url(home_url('/'))?>" class="nav-link"><strong>Ajuda</strong></a></li>
+          <li class="nav-item active"><a href="<?php echo esc_url(home_url('/'))?>" class="nav-link"><strong>Ajudar</strong></a></li>
           <li class="nav-item"><a href="" class="nav-link">Contatos</a></li>
           <li class="nav-item"><a href="" class="nav-link">Sobre Nós</a></li>
           <li class="nav-item"><a href="" class="nav-link">FAQs</a></li>
